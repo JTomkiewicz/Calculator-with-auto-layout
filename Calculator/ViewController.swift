@@ -34,6 +34,8 @@ class ViewController: UIViewController {
                 label.text = "-";
             case 15:    // +
                 label.text = "+";
+            case 17:
+                label.text = "^";
             default:
                 break
             }
@@ -51,6 +53,8 @@ class ViewController: UIViewController {
                 label.text = String(previusNumberShown - numberShown)
             case 15:
                 label.text = String(previusNumberShown + numberShown)
+            case 17:
+                label.text = String(Double(pow(Double(previusNumberShown), Double(numberShown))))
             default:
                 break
             }
