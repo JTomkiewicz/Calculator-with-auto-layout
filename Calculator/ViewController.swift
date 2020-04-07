@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func options(_ sender: UIButton) {
-        if label.text != "" && sender.tag != 11 && sender.tag != 16 { //if not C or =
+        if label.text != "" && sender.tag != 11 && sender.tag != 16 && sender.tag != 18{ //if not C or =
             previusNumberShown = Double(label.text!)!
             
             switch sender.tag {
@@ -37,13 +37,13 @@ class ViewController: UIViewController {
             case 17:
                 label.text = "^";
             default:
-                break
+                label.text = "";
             }
             
             operation = sender.tag
             doingMath = true
         }
-        else if sender.tag == 16 { // =
+        else if sender.tag == 16 && sender.tag != 18 { // =
             switch operation {
             case 12:
                 label.text = String(previusNumberShown / numberShown)
@@ -54,9 +54,9 @@ class ViewController: UIViewController {
             case 15:
                 label.text = String(previusNumberShown + numberShown)
             case 17:
-                label.text = String(Double(pow(Double(previusNumberShown), Double(numberShown))))
+                label.text = String(pow(previusNumberShown, numberShown))
             default:
-                break
+                label.text = ""
             }
         }
         else if sender.tag == 11 {
@@ -64,6 +64,10 @@ class ViewController: UIViewController {
             previusNumberShown = 0
             numberShown = 0
             operation = 0
+        }
+        else if sender.tag == 18 {
+            label.text = String(sqrt(numberShown))
+            doingMath = true
         }
     }
     
